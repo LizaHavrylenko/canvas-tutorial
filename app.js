@@ -1,21 +1,102 @@
-window.onload = function () {
-    var canvasElement = document.getElementById('NewCanvas');
-    console.log('Canvas height: ', canvasElement.height, ' Canvas width: ', canvasElement.width);
-    var context = canvasElement.getContext('2d');
-    console.log('Context height: ', context.height, ' Context width: ', context.width);
-    context.strokeStyle = '#000'
-    context.moveTo(0, 0);
-    context.lineTo(200, 200);
-    context.stroke();
+function draw() {
+    var canvas = document.getElementById('example');
+    var modification = document.getElementById('modification');
+    if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        //draw lines
+        for (i = 20; i < 100; i += 10) {
+            ctx.moveTo(10, i);
+            ctx.lineTo(100, i);
+            ctx.stroke();
+        }
+        for (i = 20; i < 100; i += 10) {
+            ctx.moveTo(i, 10);
+            ctx.lineTo(i, 100);
+            ctx.stroke();
+        }
+    }
+    if (modification.getContext) {
+        var ctx = modification.getContext('2d');
+        var width = 1;
+        for (i = 20; i < 100; i += 20) {
 
-    drawCircle([100, 150], 20, context);
+            ctx.beginPath();
+            ctx.moveTo(10, i);
+            ctx.lineTo(100, i);
+            ctx.lineCap = 'round';
+            ctx.lineWidth = width;
 
-    drawCircle([50, 100], 30, context);
-};
+            ctx.strokeStyle = 'rgb(19,139,67)';
+            ctx.stroke();
+            width += 3;
+        }
+    }
 
-function drawCircle(center, radius, context) {
-    context.beginPath();
-    context.arc(center[0], center[1], radius, 0, 2 * Math.PI);
-    context.stroke();
+    //draw arcs(circle)
+    if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        var x = 70;
+        var y = 200;
+        var radius = 50;
+        var startAngle = 0;
+        var endAngle = 2 * Math.PI;
+        var counterClockwise = false;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "purple";
+        ctx.stroke();
 
+
+    }
+
+//draw arcs(rainbow)
+    if (modification.getContext) {
+        var ctx = modification.getContext('2d');
+        var x = 70;
+        var y = 200;
+        var radius = 60;
+        var arcWidth = 6;
+        var startAngle = 1.1 * Math.PI;
+        var endAngle = 1.9 * Math.PI;
+        var counterClockwise = false;
+        for (var arcIndex = 1; arcIndex < 8; arcIndex++) {
+
+            ctx.beginPath();
+            switch (arcIndex) {
+                case 1:
+                    ctx.strokeStyle = 'red';
+                    break;
+                case 2:
+                    ctx.strokeStyle = 'orange';
+                    break;
+                case 3:
+                    ctx.strokeStyle = 'yellow';
+                    break;
+                case 4:
+                    ctx.strokeStyle = 'green';
+                    break;
+                case 5:
+                    ctx.strokeStyle = '#00CED1';
+                    break;
+                case 6:
+                    ctx.strokeStyle = 'blue';
+                    break;
+                case 7:
+                    ctx.strokeStyle = 'purple';
+                    break;
+                default:
+                    ctx.strokeStyle = 'black';
+                    break;
+            }
+            ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+            ctx.lineWidth = arcWidth;
+            radius -= arcWidth;
+
+            ctx.stroke();
+
+        }
+
+
+    }
 }

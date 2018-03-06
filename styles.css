@@ -1,3 +1,13 @@
 canvas {
     border: 1px solid black;
 }
+
+#own {
+    border: 3px inset green;
+}
+
+table {
+    width:100%;
+    border-spacing: 15px;
+    text-align: center;
+}

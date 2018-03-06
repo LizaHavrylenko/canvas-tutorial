@@ -2,14 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>canvas-tutorial</title>
+    <title>HTML 5 Canvas Basics</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </head>
-<body>
-<h1>Canvas Tutorial</h1>
-<canvas id="NewCanvas" height="500" width="800">
-    <p>Canvas is not loaded.</p>
-</canvas>
+<body onload="draw();">
+<h1> HTML 5 Canvas Tutorial </h1>
+<table>
+    <tr>
+        <td>
+            <p>Tutorial examples</p>
+        </td>
+        <td>
+            <p>My modifications</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <canvas id="example" width="200" height="1300"></canvas>
+            <canvas id="modification" width="200" height="1300"></canvas>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
